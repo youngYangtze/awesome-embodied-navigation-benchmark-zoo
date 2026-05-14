@@ -2,9 +2,9 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-A curated map of embodied navigation benchmarks, datasets, metrics, leaderboards, and reproducibility notes.
+A curated awesome list and benchmark zoo for embodied navigation, ObjectNav, vision-language navigation, robot navigation, spatial AI, datasets, metrics, leaderboards, and reproducibility notes.
 
-This repository‘s goal is to help researchers and builders answer practical benchmark questions:
+This repository's goal is to help researchers and builders answer practical benchmark questions:
 
 - Which navigation task should I evaluate on?
 - What simulator, dataset, observations, action space, and metrics does it use?
@@ -48,7 +48,7 @@ See [docs/taxonomy.md](docs/taxonomy.md) for the working taxonomy.
 
 The structured source of truth is [data/benchmarks.yml](data/benchmarks.yml).
 
-#### Habitat Navigation Challenge 2023
+#### <span style="color: #d73a49;">Habitat Navigation Challenge 2023</span>
 
 AI Habitat team
 Challenge, 2023. [Project](https://aihabitat.org/challenge/2023/) | [Code](https://github.com/facebookresearch/habitat-challenge) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/1904.01201)

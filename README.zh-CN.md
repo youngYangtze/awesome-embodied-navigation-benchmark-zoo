@@ -2,7 +2,7 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-具身导航 benchmark、数据集、指标、排行榜与可复现信息的结构化导航图谱。
+面向 embodied navigation、ObjectNav、vision-language navigation、robot navigation、spatial AI 的 curated awesome list 与 benchmark zoo，系统整理数据集、指标、排行榜和可复现信息。
 
 本仓库的目标是帮助研究者和工程实践者快速回答这些实际问题：
 
@@ -48,7 +48,7 @@
 
 本部分结构化数据源是 [data/benchmarks.yml](data/benchmarks.yml)。
 
-#### Habitat Navigation Challenge 2023
+#### <span style="color: #d73a49;">Habitat Navigation Challenge 2023</span>
 
 AI Habitat team
 Challenge, 2023. [Project](https://aihabitat.org/challenge/2023/) | [Code](https://github.com/facebookresearch/habitat-challenge) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/1904.01201)
