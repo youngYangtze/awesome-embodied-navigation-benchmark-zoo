@@ -1,0 +1,54 @@
+name: Add a benchmark / 添加 benchmark
+description: Suggest a benchmark for the zoo. / 为本 zoo 推荐一个 benchmark。
+title: "Add benchmark / 添加 benchmark: "
+labels:
+  - benchmark
+  - needs-review
+body:
+  - type: input
+    id: benchmark_name
+    attributes:
+      label: Benchmark name / Benchmark 名称
+      description: Official benchmark or dataset name. / 官方 benchmark 或 dataset 名称。
+    validations:
+      required: true
+  - type: input
+    id: project_url
+    attributes:
+      label: Official project URL / 官方项目链接
+      description: Project page, official GitHub repository, or benchmark page. / 项目页、官方 GitHub 仓库或 benchmark 页面。
+    validations:
+      required: true
+  - type: dropdown
+    id: task_family
+    attributes:
+      label: Task family / 任务族
+      options:
+        - point-navigation
+        - image-navigation
+        - object-navigation
+        - multi-object-navigation
+        - vision-language-navigation
+        - vision-and-dialog-navigation
+        - embodied-question-answering
+        - social-navigation
+        - audio-visual-navigation
+        - aerial-navigation
+        - foundation-model-navigation
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: benchmark_details
+    attributes:
+      label: Benchmark details / Benchmark 详情
+      description: Describe dataset, simulator, observations, action space, metrics, and leaderboard status. / 描述 dataset、simulator、observations、action space、metrics 和 leaderboard 状态。
+    validations:
+      required: true
+  - type: textarea
+    id: reproducibility
+    attributes:
+      label: Reproducibility notes / 可复现说明
+      description: What code, data, baselines, and evaluation scripts are public? / 哪些代码、数据、baselines 和 evaluation scripts 是公开的？
+    validations:
+      required: false

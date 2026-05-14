@@ -1,0 +1,623 @@
+benchmarks:
+  - id: habitat-navigation-2023
+    name: Habitat Navigation Challenge 2023
+    year: 2023
+    task_family:
+      - object-navigation
+      - image-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/facebookresearch/habitat-lab
+    dataset:
+      name: HM3D-Semantics v0.2
+      url: https://aihabitat.org/challenge/2023/
+      access: gated-or-terms-required
+    goal_type:
+      - object-category
+      - goal-image
+    observation_modalities:
+      - rgb
+      - depth
+      - gps-compass
+    action_space:
+      - continuous-velocity
+      - waypoint
+      - discrete-waypoint
+    metrics:
+      - success
+      - spl
+      - soft-spl
+      - distance-to-goal
+      - collisions
+    links:
+      project: https://aihabitat.org/challenge/2023/
+      code: https://github.com/facebookresearch/habitat-challenge
+      leaderboard: https://eval.ai/
+      paper: https://arxiv.org/abs/1904.01201
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: medium
+    sim_to_real_relevance: high
+    notes: Uses Hello Robot Stretch configuration and HM3D-Semantics v0.2.
+
+  - id: robothor-objectnav
+    name: RoboTHOR ObjectNav
+    year: 2020
+    task_family:
+      - object-navigation
+      - sim-to-real-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - real-world
+    simulator:
+      name: AI2-THOR / RoboTHOR
+      url: https://ai2thor.allenai.org/robothor/
+    dataset:
+      name: RoboTHOR
+      url: https://ai2thor.allenai.org/robothor/
+      access: public
+    goal_type:
+      - object-category
+    observation_modalities:
+      - rgb
+      - depth
+    action_space:
+      - discrete
+    metrics:
+      - success
+      - spl
+    links:
+      project: https://ai2thor.allenai.org/robothor/
+      code: https://github.com/allenai/robothor-challenge
+      leaderboard: https://ai2thor.allenai.org/robothor/
+      paper: https://arxiv.org/abs/2004.06799
+    leaderboard_status: archival
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: medium
+    sim_to_real_relevance: high
+    notes: Important for sim-to-real ObjectNav evaluation.
+
+  - id: multion
+    name: MultiON
+    year: 2020
+    task_family:
+      - multi-object-navigation
+      - semantic-map-memory
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/facebookresearch/habitat-lab
+    dataset:
+      name: MultiON Challenge
+      url: https://multion-challenge.cs.sfu.ca/2023.html
+      access: public
+    goal_type:
+      - ordered-object-goals
+    observation_modalities:
+      - rgb
+      - depth
+      - semantic
+    action_space:
+      - discrete
+    metrics:
+      - success
+      - progress
+      - spl
+    links:
+      project: https://multion-challenge.cs.sfu.ca/2023.html
+      code: https://github.com/saimwani/multiON
+      leaderboard: https://eval.ai/
+      paper: https://arxiv.org/abs/2012.11736
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: medium
+    sim_to_real_relevance: medium
+    notes: Long-horizon extension of object navigation with multiple sequential goals.
+
+  - id: r2r
+    name: Room-to-Room
+    year: 2018
+    task_family:
+      - vision-language-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Matterport3D Simulator
+      url: https://github.com/peteanderson80/Matterport3DSimulator
+    dataset:
+      name: R2R
+      url: https://bringmeaspoon.org/
+      access: terms-required
+    goal_type:
+      - natural-language-route-instruction
+    observation_modalities:
+      - panoramic-rgb
+      - depth-optional
+    action_space:
+      - graph-discrete-viewpoints
+    metrics:
+      - navigation-error
+      - success-rate
+      - spl
+      - ndtw
+      - sdtw
+    links:
+      project: https://bringmeaspoon.org/
+      code: https://github.com/peteanderson80/Matterport3DSimulator
+      leaderboard: https://eval.ai/
+      paper: https://arxiv.org/abs/1711.07280
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    notes: Canonical VLN benchmark in Matterport3D environments.
+
+  - id: rxr
+    name: Room-Across-Room
+    year: 2020
+    task_family:
+      - vision-language-navigation
+      - multilingual-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Matterport3D / Habitat
+      url: https://github.com/google-research-datasets/RxR
+    dataset:
+      name: RxR
+      url: https://github.com/google-research-datasets/RxR
+      access: public-with-terms
+    goal_type:
+      - multilingual-route-instruction
+    observation_modalities:
+      - panoramic-rgb
+      - pose-traces
+      - text-groundings
+    action_space:
+      - graph-discrete-viewpoints
+      - continuous-habitat-variant
+    metrics:
+      - navigation-error
+      - success-rate
+      - spl
+      - ndtw
+      - sdtw
+    links:
+      project: https://research.google/pubs/room-across-room-multilingual-vision-and-language-navigation-with-dense-spatiotemporal-grounding/
+      code: https://github.com/google-research-datasets/RxR
+      leaderboard: https://eval.ai/
+      paper: https://arxiv.org/abs/2010.07954
+    leaderboard_status: active-historical
+    baseline_code_status: public-readonly
+    reproducibility_status: archival
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    notes: Large multilingual VLN dataset with dense spatiotemporal grounding.
+
+  - id: reverie
+    name: REVERIE
+    year: 2020
+    task_family:
+      - remote-object-navigation
+      - vision-language-navigation
+      - object-grounding
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Matterport3D Simulator
+      url: https://github.com/YuankaiQi/REVERIE
+    dataset:
+      name: REVERIE
+      url: https://github.com/YuankaiQi/REVERIE
+      access: terms-required
+    goal_type:
+      - referring-expression
+      - remote-object
+    observation_modalities:
+      - panoramic-rgb
+      - object-candidates
+    action_space:
+      - graph-discrete-viewpoints
+    metrics:
+      - navigation-error
+      - oracle-success-rate
+      - remote-grounding-success
+      - spl
+    links:
+      project: https://github.com/YuankaiQi/REVERIE
+      code: https://github.com/YuankaiQi/REVERIE
+      leaderboard: https://github.com/YuankaiQi/REVERIE
+      paper: https://arxiv.org/abs/1904.10151
+    leaderboard_status: active-manual
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    notes: Combines navigation with remote object grounding.
+
+  - id: vln-ce
+    name: Vision-and-Language Navigation in Continuous Environments
+    year: 2020
+    task_family:
+      - vision-language-navigation
+      - continuous-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/jacobkrantz/VLN-CE
+    dataset:
+      name: VLN-CE
+      url: https://github.com/jacobkrantz/VLN-CE
+      access: public-with-terms
+    goal_type:
+      - natural-language-route-instruction
+    observation_modalities:
+      - rgb
+      - depth
+      - instruction
+    action_space:
+      - continuous
+      - low-level-discrete
+    metrics:
+      - success-rate
+      - spl
+      - ndtw
+      - sdtw
+    links:
+      project: https://github.com/jacobkrantz/VLN-CE
+      code: https://github.com/jacobkrantz/VLN-CE
+      leaderboard: null
+      paper: https://arxiv.org/abs/2004.02857
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Continuous-space VLN benchmark built on Habitat.
+
+  - id: cvdn
+    name: Cooperative Vision-and-Dialog Navigation
+    year: 2019
+    task_family:
+      - vision-and-dialog-navigation
+      - interactive-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Matterport3D Simulator
+      url: https://cvdn.dev/
+    dataset:
+      name: CVDN
+      url: https://cvdn.dev/
+      access: public-with-terms
+    goal_type:
+      - dialog-history
+      - route-instruction
+    observation_modalities:
+      - panoramic-rgb
+      - dialog
+    action_space:
+      - graph-discrete-viewpoints
+    metrics:
+      - goal-progress
+      - navigation-error
+    links:
+      project: https://cvdn.dev/
+      code: https://github.com/mmurray/cvdn
+      leaderboard: https://cvdn.dev/
+      paper: https://arxiv.org/abs/1907.04957
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    notes: Dialog-based navigation with navigator-oracle interactions.
+
+  - id: open-eqa
+    name: OpenEQA
+    year: 2024
+    task_family:
+      - embodied-question-answering
+      - active-exploration
+      - episodic-memory
+    environment_type:
+      - indoor
+      - real-world
+      - simulation
+    simulator:
+      name: Habitat for active exploration setting
+      url: https://open-eqa.github.io/
+    dataset:
+      name: OpenEQA
+      url: https://github.com/facebookresearch/open-eqa
+      access: public
+    goal_type:
+      - open-vocabulary-question
+    observation_modalities:
+      - rgb
+      - depth
+      - camera-pose
+      - natural-language
+    action_space:
+      - active-exploration
+      - episodic-memory-only
+    metrics:
+      - llm-match
+      - human-agreement
+    links:
+      project: https://open-eqa.github.io/
+      code: https://github.com/facebookresearch/open-eqa
+      leaderboard: https://open-eqa.github.io/
+      paper: https://open-eqa.github.io/assets/pdfs/paper.pdf
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    notes: Evaluates open-vocabulary environmental understanding using episodic memory and active exploration.
+
+  - id: soundspaces
+    name: SoundSpaces
+    year: 2020
+    task_family:
+      - audio-visual-navigation
+      - audiogoal-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: SoundSpaces / Habitat
+      url: https://soundspaces.org/
+    dataset:
+      name: SoundSpaces
+      url: https://github.com/facebookresearch/sound-spaces
+      access: public-with-terms
+    goal_type:
+      - sound-emitting-target
+    observation_modalities:
+      - rgb
+      - depth
+      - binaural-audio
+    action_space:
+      - discrete
+      - continuous-in-soundspaces-2
+    metrics:
+      - success
+      - spl
+      - distance-to-goal
+    links:
+      project: https://soundspaces.org/
+      code: https://github.com/facebookresearch/sound-spaces
+      leaderboard: https://soundspaces.org/
+      paper: https://vision.cs.utexas.edu/projects/audio_visual_navigation/
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: medium
+    sim_to_real_relevance: medium
+    notes: Adds realistic acoustic simulation to embodied navigation.
+
+  - id: socnavbench
+    name: SocNavBench
+    year: 2021
+    task_family:
+      - social-navigation
+      - human-aware-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - pedestrian-data-grounded
+    simulator:
+      name: SocNavBench
+      url: https://github.com/CMU-TBD/SocNavBench
+    dataset:
+      name: Curated social navigation scenarios
+      url: https://github.com/CMU-TBD/SocNavBench
+      access: public
+    goal_type:
+      - navigation-goal-among-humans
+    observation_modalities:
+      - agent-state
+      - pedestrian-state
+      - map
+    action_space:
+      - planner-dependent
+    metrics:
+      - path-efficiency
+      - safety
+      - comfort
+      - personal-space-intrusion
+    links:
+      project: https://github.com/CMU-TBD/SocNavBench
+      code: https://github.com/CMU-TBD/SocNavBench
+      leaderboard: null
+      paper: https://www.ri.cmu.edu/publications/socnavbench-a-grounded-simulation-testing-framework-for-evaluating-social-navigation/
+    leaderboard_status: framework
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: medium
+    sim_to_real_relevance: medium
+    notes: Focuses on consistent evaluation for social navigation algorithms.
+
+  - id: smm-challenge-2025
+    name: Social Mobile Manipulation Challenge
+    year: 2025
+    task_family:
+      - social-navigation
+      - mobile-manipulation
+      - long-horizon-planning
+    environment_type:
+      - simulation
+      - multi-agent
+    simulator:
+      name: Isaac Sim
+      url: https://smm-challenge.github.io/
+    dataset:
+      name: Open World Social Mobile Manipulation
+      url: https://smm-challenge.github.io/
+      access: challenge-registration
+    goal_type:
+      - social-task-instruction
+      - scene-graph-prompt
+    observation_modalities:
+      - vision
+      - language
+      - scene-graph
+      - multi-agent-state
+    action_space:
+      - simulator-api
+    metrics:
+      - task-success
+      - social-interaction-quality
+      - planning-efficiency
+    links:
+      project: https://smm-challenge.github.io/
+      code: https://smm-challenge.github.io/
+      leaderboard: https://smm-challenge.github.io/
+      paper: null
+    leaderboard_status: active-historical
+    baseline_code_status: partial
+    reproducibility_status: needs-review
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Navigation is part of a broader social mobile manipulation challenge.
+
+  - id: aerialvln
+    name: AerialVLN
+    year: 2023
+    task_family:
+      - aerial-navigation
+      - vision-language-navigation
+    environment_type:
+      - outdoor
+      - simulation
+      - uav
+    simulator:
+      name: AirVLN Simulator
+      url: https://github.com/AirVLN/AirVLN
+    dataset:
+      name: AerialVLN
+      url: https://github.com/AirVLN/AirVLN
+      access: public
+    goal_type:
+      - natural-language-uav-route-instruction
+    observation_modalities:
+      - rgb
+      - language
+      - pose
+    action_space:
+      - continuous-uav
+    metrics:
+      - success-rate
+      - spl
+      - trajectory-error
+    links:
+      project: https://github.com/AirVLN/AirVLN
+      code: https://github.com/AirVLN/AirVLN
+      leaderboard: null
+      paper: https://arxiv.org/abs/2308.06735
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: UAV-based outdoor VLN benchmark with city-level scenarios.
+
+  - id: avdn
+    name: Aerial Vision-and-Dialog Navigation
+    year: 2023
+    task_family:
+      - aerial-navigation
+      - vision-and-dialog-navigation
+    environment_type:
+      - outdoor
+      - simulation
+      - uav
+    simulator:
+      name: AVDN Simulator
+      url: https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation
+    dataset:
+      name: AVDN
+      url: https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation
+      access: public-with-external-xview-terms
+    goal_type:
+      - dialog-history
+      - waypoint-prediction
+    observation_modalities:
+      - aerial-rgb
+      - dialog
+      - human-attention
+    action_space:
+      - waypoint
+    metrics:
+      - waypoint-error
+      - navigation-success
+    links:
+      project: https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation
+      code: https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation
+      leaderboard: https://eval.ai/web/challenges/challenge-page/2049/overview
+      paper: https://arxiv.org/abs/2205.12219
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Dialog-based UAV navigation with human attention annotations.
+
+  - id: navbench
+    name: NavBench
+    year: 2025
+    task_family:
+      - foundation-model-navigation
+      - navigation-comprehension
+      - step-by-step-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Benchmark-specific indoor navigation setup
+      url: https://navbench.github.io/
+    dataset:
+      name: NavBench
+      url: https://navbench.github.io/
+      access: public
+    goal_type:
+      - instruction-comprehension
+      - step-by-step-execution
+    observation_modalities:
+      - rgb
+      - language
+      - optional-map-context
+    action_space:
+      - converted-robot-actions
+    metrics:
+      - qa-accuracy
+      - execution-success
+      - complexity-stratified-score
+    links:
+      project: https://navbench.github.io/
+      code: https://navbench.github.io/
+      leaderboard: https://navbench.github.io/
+      paper: https://navbench.github.io/
+    leaderboard_status: project-leaderboard
+    baseline_code_status: public
+    reproducibility_status: needs-review
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Probes MLLMs for embodied navigation comprehension and execution.
