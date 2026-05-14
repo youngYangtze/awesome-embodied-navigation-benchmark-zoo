@@ -52,7 +52,7 @@
 
 本部分结构化数据源是 [data/benchmarks.yml](data/benchmarks.yml)。
 
-#### <span style="color: #d73a49;">Habitat Navigation Challenge 2023</span>
+#### ▸ Habitat Navigation Challenge 2023
 
 AI Habitat team
 Challenge, 2023. [Project](https://aihabitat.org/challenge/2023/) | [Code](https://github.com/facebookresearch/habitat-challenge) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/1904.01201)
@@ -80,7 +80,7 @@ Habitat Navigation Challenge 2023 在 Habitat 生态中使用 HM3D-Semantics 评
 
 </details>
 
-#### RoboTHOR ObjectNav
+#### ▸ RoboTHOR ObjectNav
 
 Allen Institute for AI
 Benchmark, 2020. [Project](https://ai2thor.allenai.org/robothor/) | [Code](https://github.com/allenai/robothor-challenge) | [Paper](https://arxiv.org/abs/2004.06799)
@@ -108,7 +108,7 @@ RoboTHOR 研究 paired simulation 与真实机器人设置下的 ObjectNav，因
 
 </details>
 
-#### MultiON
+#### ▸ MultiON
 
 MultiON Challenge team
 Challenge, 2020. [Project](https://multion-challenge.cs.sfu.ca/2023.html) | [Code](https://github.com/saimwani/multiON) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/2012.11736)
@@ -136,7 +136,7 @@ MultiON 将 ObjectNav 从单一目标扩展到有序物体目标序列，用来�
 
 </details>
 
-#### Room-to-Room (R2R)
+#### ▸ Room-to-Room (R2R)
 
 Anderson et al.
 Benchmark, 2018. [Project](https://bringmeaspoon.org/) | [Code](https://github.com/peteanderson80/Matterport3DSimulator) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/1711.07280)
@@ -164,7 +164,7 @@ R2R 是经典 Vision-Language Navigation benchmark：agent 根据人类写作的
 
 </details>
 
-#### Room-Across-Room (RxR)
+#### ▸ Room-Across-Room (RxR)
 
 Ku et al.
 Benchmark, 2020. [Project](https://research.google/pubs/room-across-room-multilingual-vision-and-language-navigation-with-dense-spatiotemporal-grounding/) | [Code](https://github.com/google-research-datasets/RxR) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/2010.07954)
@@ -192,7 +192,7 @@ RxR 将 VLN 扩展到多语言指令和 dense spatiotemporal grounding，适合�
 
 </details>
 
-#### REVERIE
+#### ▸ REVERIE
 
 Qi et al.
 Benchmark, 2020. [Project](https://github.com/YuankaiQi/REVERIE) | [Code](https://github.com/YuankaiQi/REVERIE) | [Paper](https://arxiv.org/abs/1904.10151)
@@ -220,7 +220,7 @@ REVERIE 结合 remote object localization 与 language-guided navigation。agent
 
 </details>
 
-#### Vision-and-Language Navigation in Continuous Environments (VLN-CE)
+#### ▸ Vision-and-Language Navigation in Continuous Environments (VLN-CE)
 
 Krantz et al.
 Benchmark, 2020. [Project](https://github.com/jacobkrantz/VLN-CE) | [Code](https://github.com/jacobkrantz/VLN-CE) | [Paper](https://arxiv.org/abs/2004.02857)
@@ -248,7 +248,7 @@ VLN-CE 将 instruction-following 从图节点上的离散导航转为连续 3D �
 
 </details>
 
-#### Cooperative Vision-and-Dialog Navigation (CVDN)
+#### ▸ Cooperative Vision-and-Dialog Navigation (CVDN)
 
 Thomason et al.
 Benchmark, 2019. [Project](https://cvdn.dev/) | [Code](https://github.com/mmurray/cvdn) | [Paper](https://arxiv.org/abs/1907.04957)
@@ -276,7 +276,7 @@ CVDN 通过对话评估导航：navigator 需要利用与 oracle 的 conversatio
 
 </details>
 
-#### OpenEQA
+#### ▸ OpenEQA
 
 Meta AI / FAIR
 Benchmark, 2024. [Project](https://open-eqa.github.io/) | [Code](https://github.com/facebookresearch/open-eqa) | [Paper](https://open-eqa.github.io/assets/pdfs/paper.pdf)
@@ -304,7 +304,7 @@ OpenEQA 评估具身 agent 能否基于 episodic memory 或 active exploration �
 
 </details>
 
-#### SoundSpaces
+#### ▸ SoundSpaces
 
 Chen et al. / Meta AI
 Benchmark, 2020. [Project](https://soundspaces.org/) | [Code](https://github.com/facebookresearch/sound-spaces) | [Paper](https://vision.cs.utexas.edu/projects/audio_visual_navigation/)
@@ -332,7 +332,7 @@ SoundSpaces 为具身导航加入 realistic audio simulation，使 agent 能结�
 
 </details>
 
-#### SocNavBench
+#### ▸ SocNavBench
 
 CMU TBD Lab
 Benchmark framework, 2021. [Project](https://github.com/CMU-TBD/SocNavBench) | [Code](https://github.com/CMU-TBD/SocNavBench) | [Paper](https://www.ri.cmu.edu/publications/socnavbench-a-grounded-simulation-testing-framework-for-evaluating-social-navigation/)
@@ -360,7 +360,7 @@ SocNavBench 是面向 social navigation 的仿真测试框架，用于评估导�
 
 </details>
 
-#### Social Mobile Manipulation Challenge
+#### ▸ Social Mobile Manipulation Challenge
 
 SMM Challenge organizers
 Challenge, 2025. [Project](https://smm-challenge.github.io/) | [Leaderboard](https://smm-challenge.github.io/)
@@ -388,7 +388,7 @@ Social Mobile Manipulation Challenge 在社会动态环境中评估长时程具�
 
 </details>
 
-#### AerialVLN
+#### ▸ AerialVLN
 
 AirVLN team
 Benchmark, 2023. [Project](https://github.com/AirVLN/AirVLN) | [Code](https://github.com/AirVLN/AirVLN) | [Paper](https://arxiv.org/abs/2308.06735)
@@ -416,7 +416,7 @@ AerialVLN 将 language-guided navigation 放到 UAV 环境中，测试 agent 能
 
 </details>
 
-#### Aerial Vision-and-Dialog Navigation (AVDN)
+#### ▸ Aerial Vision-and-Dialog Navigation (AVDN)
 
 Eric AI Lab
 Benchmark, 2023. [Project](https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation) | [Code](https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation) | [Leaderboard](https://eval.ai/web/challenges/challenge-page/2049/overview) | [Paper](https://arxiv.org/abs/2205.12219)
@@ -444,7 +444,7 @@ AVDN 在 aerial imagery 上评估 dialog-guided UAV navigation，结合 visual o
 
 </details>
 
-#### NavBench
+#### ▸ NavBench
 
 NavBench team
 Benchmark, 2025. [Project](https://navbench.github.io/) | [Leaderboard](https://navbench.github.io/)

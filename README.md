@@ -52,7 +52,7 @@ See [docs/taxonomy.md](docs/taxonomy.md) for the working taxonomy.
 
 The structured source of truth is [data/benchmarks.yml](data/benchmarks.yml).
 
-#### <span style="color: #d73a49;">Habitat Navigation Challenge 2023</span>
+#### ▸ Habitat Navigation Challenge 2023
 
 AI Habitat team
 Challenge, 2023. [Project](https://aihabitat.org/challenge/2023/) | [Code](https://github.com/facebookresearch/habitat-challenge) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/1904.01201)
@@ -80,7 +80,7 @@ Habitat Navigation Challenge 2023 evaluates ObjectNav and ImageNav in HM3D-Seman
 
 </details>
 
-#### RoboTHOR ObjectNav
+#### ▸ RoboTHOR ObjectNav
 
 Allen Institute for AI
 Benchmark, 2020. [Project](https://ai2thor.allenai.org/robothor/) | [Code](https://github.com/allenai/robothor-challenge) | [Paper](https://arxiv.org/abs/2004.06799)
@@ -108,7 +108,7 @@ RoboTHOR studies ObjectNav under a paired simulation and real-robot setup, makin
 
 </details>
 
-#### MultiON
+#### ▸ MultiON
 
 MultiON Challenge team
 Challenge, 2020. [Project](https://multion-challenge.cs.sfu.ca/2023.html) | [Code](https://github.com/saimwani/multiON) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/2012.11736)
@@ -136,7 +136,7 @@ MultiON extends ObjectNav from a single goal to a sequence of object goals, test
 
 </details>
 
-#### Room-to-Room (R2R)
+#### ▸ Room-to-Room (R2R)
 
 Anderson et al.
 Benchmark, 2018. [Project](https://bringmeaspoon.org/) | [Code](https://github.com/peteanderson80/Matterport3DSimulator) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/1711.07280)
@@ -164,7 +164,7 @@ R2R is the canonical Vision-Language Navigation benchmark: an agent follows huma
 
 </details>
 
-#### Room-Across-Room (RxR)
+#### ▸ Room-Across-Room (RxR)
 
 Ku et al.
 Benchmark, 2020. [Project](https://research.google/pubs/room-across-room-multilingual-vision-and-language-navigation-with-dense-spatiotemporal-grounding/) | [Code](https://github.com/google-research-datasets/RxR) | [Leaderboard](https://eval.ai/) | [Paper](https://arxiv.org/abs/2010.07954)
@@ -192,7 +192,7 @@ RxR scales VLN to multilingual instructions and dense spatiotemporal grounding, 
 
 </details>
 
-#### REVERIE
+#### ▸ REVERIE
 
 Qi et al.
 Benchmark, 2020. [Project](https://github.com/YuankaiQi/REVERIE) | [Code](https://github.com/YuankaiQi/REVERIE) | [Paper](https://arxiv.org/abs/1904.10151)
@@ -220,7 +220,7 @@ REVERIE combines remote object localization with language-guided navigation. The
 
 </details>
 
-#### Vision-and-Language Navigation in Continuous Environments (VLN-CE)
+#### ▸ Vision-and-Language Navigation in Continuous Environments (VLN-CE)
 
 Krantz et al.
 Benchmark, 2020. [Project](https://github.com/jacobkrantz/VLN-CE) | [Code](https://github.com/jacobkrantz/VLN-CE) | [Paper](https://arxiv.org/abs/2004.02857)
@@ -248,7 +248,7 @@ VLN-CE converts instruction-following from graph-discrete navigation into contin
 
 </details>
 
-#### Cooperative Vision-and-Dialog Navigation (CVDN)
+#### ▸ Cooperative Vision-and-Dialog Navigation (CVDN)
 
 Thomason et al.
 Benchmark, 2019. [Project](https://cvdn.dev/) | [Code](https://github.com/mmurray/cvdn) | [Paper](https://arxiv.org/abs/1907.04957)
@@ -276,7 +276,7 @@ CVDN evaluates navigation through dialog: a navigator must use conversation hist
 
 </details>
 
-#### OpenEQA
+#### ▸ OpenEQA
 
 Meta AI / FAIR
 Benchmark, 2024. [Project](https://open-eqa.github.io/) | [Code](https://github.com/facebookresearch/open-eqa) | [Paper](https://open-eqa.github.io/assets/pdfs/paper.pdf)
@@ -304,7 +304,7 @@ OpenEQA evaluates whether embodied agents can answer open-vocabulary questions a
 
 </details>
 
-#### SoundSpaces
+#### ▸ SoundSpaces
 
 Chen et al. / Meta AI
 Benchmark, 2020. [Project](https://soundspaces.org/) | [Code](https://github.com/facebookresearch/sound-spaces) | [Paper](https://vision.cs.utexas.edu/projects/audio_visual_navigation/)
@@ -332,7 +332,7 @@ SoundSpaces adds realistic audio simulation to embodied navigation, enabling age
 
 </details>
 
-#### SocNavBench
+#### ▸ SocNavBench
 
 CMU TBD Lab
 Benchmark framework, 2021. [Project](https://github.com/CMU-TBD/SocNavBench) | [Code](https://github.com/CMU-TBD/SocNavBench) | [Paper](https://www.ri.cmu.edu/publications/socnavbench-a-grounded-simulation-testing-framework-for-evaluating-social-navigation/)
@@ -360,7 +360,7 @@ SocNavBench is a simulation testing framework for social navigation, designed to
 
 </details>
 
-#### Social Mobile Manipulation Challenge
+#### ▸ Social Mobile Manipulation Challenge
 
 SMM Challenge organizers
 Challenge, 2025. [Project](https://smm-challenge.github.io/) | [Leaderboard](https://smm-challenge.github.io/)
@@ -388,7 +388,7 @@ The Social Mobile Manipulation Challenge evaluates long-horizon embodied agents 
 
 </details>
 
-#### AerialVLN
+#### ▸ AerialVLN
 
 AirVLN team
 Benchmark, 2023. [Project](https://github.com/AirVLN/AirVLN) | [Code](https://github.com/AirVLN/AirVLN) | [Paper](https://arxiv.org/abs/2308.06735)
@@ -416,7 +416,7 @@ AerialVLN moves language-guided navigation into UAV environments, testing whethe
 
 </details>
 
-#### Aerial Vision-and-Dialog Navigation (AVDN)
+#### ▸ Aerial Vision-and-Dialog Navigation (AVDN)
 
 Eric AI Lab
 Benchmark, 2023. [Project](https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation) | [Code](https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation) | [Leaderboard](https://eval.ai/web/challenges/challenge-page/2049/overview) | [Paper](https://arxiv.org/abs/2205.12219)
@@ -444,7 +444,7 @@ AVDN evaluates dialog-guided UAV navigation over aerial imagery, combining visua
 
 </details>
 
-#### NavBench
+#### ▸ NavBench
 
 NavBench team
 Benchmark, 2025. [Project](https://navbench.github.io/) | [Leaderboard](https://navbench.github.io/)
