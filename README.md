@@ -2,6 +2,10 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+<p align="center">
+  <img src="assets/zoo.png" alt="Awesome Embodied Navigation Benchmark Zoo" width="100%">
+</p>
+
 A curated awesome list and benchmark zoo for embodied navigation, ObjectNav, vision-language navigation, robot navigation, spatial AI, datasets, metrics, leaderboards, and reproducibility notes.
 
 This repository's goal is to help researchers and builders answer practical benchmark questions:

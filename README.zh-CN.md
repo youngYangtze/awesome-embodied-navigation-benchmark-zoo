@@ -2,6 +2,10 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
+<p align="center">
+  <img src="assets/zoo.png" alt="Awesome Embodied Navigation Benchmark Zoo" width="100%">
+</p>
+
 面向 embodied navigation、ObjectNav、vision-language navigation、robot navigation、spatial AI 的 curated awesome list 与 benchmark zoo，系统整理数据集、指标、排行榜和可复现信息。
 
 本仓库的目标是帮助研究者和工程实践者快速回答这些实际问题：
