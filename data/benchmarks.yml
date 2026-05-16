@@ -44,6 +44,139 @@ benchmarks:
     sim_to_real_relevance: high
     notes: Uses Hello Robot Stretch configuration and HM3D-Semantics v0.2.
 
+  - id: habitat-objectnav-2024-2025
+    name: Habitat ObjectNav Challenge 2024/2025 Protocol
+    year: 2024
+    task_family:
+      - object-navigation
+      - semantic-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/facebookresearch/habitat-lab
+    dataset:
+      name: HM3D-Semantics v0.2 ObjectNav
+      url: https://aihabitat.org/challenge/2023/
+      access: gated-or-terms-required
+    goal_type:
+      - object-category
+    observation_modalities:
+      - rgb
+      - depth
+      - gps-compass
+    action_space:
+      - continuous-velocity
+      - waypoint
+      - discrete-waypoint
+    metrics:
+      - success
+      - spl
+      - soft-spl
+      - distance-to-goal
+      - collisions
+    links:
+      project: https://aihabitat.org/challenge/2023/
+      code: https://github.com/facebookresearch/habitat-challenge
+      leaderboard: https://eval.ai/web/challenges/challenge-page/1992/overview
+      paper: https://arxiv.org/abs/2006.13171
+    leaderboard_status: active-historical
+    baseline_code_status: public-readonly
+    reproducibility_status: archival
+    foundation_model_relevance: medium
+    sim_to_real_relevance: high
+    notes: No separate official 2024/2025 ObjectNav page was found; this tracks continued use of the 2023 HM3D ObjectNav protocol in later papers and leaderboards.
+
+  - id: hm3d-ovon
+    name: HM3D-OVON
+    year: 2024
+    task_family:
+      - open-vocabulary-object-navigation
+      - object-navigation
+      - semantic-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - real-world-scans
+    simulator:
+      name: Habitat
+      url: https://github.com/facebookresearch/habitat-lab
+    dataset:
+      name: HM3D-OVON
+      url: https://huggingface.co/datasets/nyokoyama/hm3d_ovon
+      access: public-with-hm3d-terms
+    goal_type:
+      - free-form-object-language
+      - open-vocabulary-object-category
+    observation_modalities:
+      - rgb
+      - depth
+      - pose
+    action_space:
+      - discrete
+    metrics:
+      - success
+      - spl
+      - distance-to-goal
+    links:
+      project: https://naoki.io/portfolio/ovon
+      code: https://github.com/naokiyokoyama/ovon
+      leaderboard: null
+      paper: https://arxiv.org/abs/2409.14296
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Expands HM3DSem ObjectNav to over 15k annotated object instances and 379 categories with free-form language goals.
+
+  - id: goat-bench
+    name: GOAT-Bench
+    year: 2024
+    task_family:
+      - multi-modal-lifelong-navigation
+      - open-vocabulary-object-navigation
+      - multi-object-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/facebookresearch/habitat-lab
+    dataset:
+      name: GOAT-Bench on HM3D
+      url: https://github.com/Ram81/goat-bench
+      access: public-with-hm3d-terms
+    goal_type:
+      - object-category
+      - language-description
+      - instance-image
+      - sequential-goals
+    observation_modalities:
+      - rgb
+      - depth
+      - gps-compass
+      - goal-modality
+    action_space:
+      - discrete
+    metrics:
+      - success
+      - spl
+      - subtask-success
+      - lifelong-progress
+    links:
+      project: https://mukulkhanna.github.io/goat-bench/
+      code: https://github.com/Ram81/goat-bench
+      leaderboard: null
+      paper: https://openaccess.thecvf.com/content/CVPR2024/html/Khanna_GOAT-Bench_A_Benchmark_for_Multi-Modal_Lifelong_Navigation_CVPR_2024_paper.html
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: GO to AnyThing episodes require 5-10 sequential open-vocabulary goals specified by category, language, or image.
+
   - id: robothor-objectnav
     name: RoboTHOR ObjectNav
     year: 2020
@@ -290,6 +423,100 @@ benchmarks:
     sim_to_real_relevance: medium
     notes: Continuous-space VLN benchmark built on Habitat.
 
+  - id: vln-ce-isaac-navila
+    name: VLN-CE-Isaac / NaVILA-Bench
+    year: 2025
+    task_family:
+      - vision-language-navigation
+      - physical-control-navigation
+      - legged-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - physics
+      - robot-embodiment
+    simulator:
+      name: Isaac Lab / Isaac Sim
+      url: https://github.com/yang-zj1026/NaVILA-Bench
+    dataset:
+      name: VLN-CE-Isaac
+      url: https://github.com/yang-zj1026/NaVILA-Bench
+      access: public-with-external-assets
+    goal_type:
+      - natural-language-route-instruction
+    observation_modalities:
+      - rgb
+      - instruction
+      - robot-state
+      - optional-depth-or-lidar
+    action_space:
+      - high-level-language-actions
+      - low-level-locomotion-control
+      - continuous-physics-control
+    metrics:
+      - success-rate
+      - spl
+      - navigation-error
+    links:
+      project: https://navila-bot.github.io/
+      code: https://github.com/yang-zj1026/NaVILA-Bench
+      leaderboard: null
+      paper: https://arxiv.org/abs/2412.04453
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    notes: Physics-realistic Isaac Lab benchmark from NaVILA for evaluating VLN-CE-style instruction following with legged robot control.
+
+  - id: vln-pe
+    name: VLN-PE
+    year: 2025
+    task_family:
+      - vision-language-navigation
+      - physical-embodiment-navigation
+      - cross-embodiment-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - physics
+      - robot-embodiment
+    simulator:
+      name: Isaac Sim / InternNav
+      url: https://github.com/InternRobotics/InternNav
+    dataset:
+      name: VLN-PE, GRU-VLN10, and 3DGS-Lab-VLN
+      url: https://crystalsixone.github.io/vln_pe.github.io/
+      access: public-with-external-assets
+    goal_type:
+      - natural-language-route-instruction
+    observation_modalities:
+      - rgb
+      - depth
+      - robot-state
+      - lighting-variants
+    action_space:
+      - discrete-action-prediction
+      - dense-waypoint-prediction
+      - map-based-planning
+      - physical-controller
+    metrics:
+      - navigation-error
+      - oracle-success-rate
+      - success-rate
+      - spl
+    links:
+      project: https://crystalsixone.github.io/vln_pe.github.io/
+      code: https://github.com/InternRobotics/InternNav
+      leaderboard: null
+      paper: https://openaccess.thecvf.com/content/ICCV2025/html/Wang_Rethinking_the_Embodied_Gap_in_Vision-and-Language_Navigation_A_Holistic_Study_ICCV_2025_paper.html
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    notes: ICCV 2025 physical VLN benchmark covering humanoid, quadruped, and wheeled embodiments under realistic locomotion and visual shifts.
+
   - id: cvdn
     name: Cooperative Vision-and-Dialog Navigation
     year: 2019
@@ -371,6 +598,98 @@ benchmarks:
     foundation_model_relevance: high
     sim_to_real_relevance: high
     notes: Evaluates open-vocabulary environmental understanding using episodic memory and active exploration.
+
+  - id: embodiedscan
+    name: EmbodiedScan
+    year: 2024
+    task_family:
+      - embodied-scene-understanding
+      - language-grounded-3d-perception
+      - navigation-adjacent-spatial-understanding
+    environment_type:
+      - indoor
+      - real-world-scans
+      - egocentric-rgbd
+    simulator:
+      name: Dataset / benchmark suite
+      url: https://tai-wang.github.io/embodiedscan/
+    dataset:
+      name: EmbodiedScan
+      url: https://tai-wang.github.io/embodiedscan/
+      access: public-with-terms
+    goal_type:
+      - 3d-scene-understanding
+      - language-grounded-perception
+    observation_modalities:
+      - rgb
+      - depth
+      - camera-pose
+      - language-prompts
+      - 3d-annotations
+    action_space:
+      - offline-dataset-evaluation
+    metrics:
+      - 3d-detection
+      - semantic-occupancy
+      - visual-grounding
+      - language-grounded-understanding
+    links:
+      project: https://tai-wang.github.io/embodiedscan/
+      code: https://github.com/InternRobotics/EmbodiedScan
+      leaderboard: null
+      paper: https://arxiv.org/abs/2312.16170
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Navigation-adjacent benchmark for egocentric 3D scene understanding; no active navigation policy is evaluated.
+
+  - id: mmscan
+    name: MMScan
+    year: 2024
+    task_family:
+      - embodied-scene-understanding
+      - language-grounded-3d-perception
+      - spatial-question-answering
+    environment_type:
+      - indoor
+      - real-world-scans
+      - egocentric-rgbd
+    simulator:
+      name: Dataset / benchmark suite
+      url: https://tai-wang.github.io/mmscan/
+    dataset:
+      name: MMScan
+      url: https://tai-wang.github.io/mmscan/
+      access: public-with-terms
+    goal_type:
+      - 3d-visual-grounding
+      - spatial-question-answering
+      - hierarchical-scene-language
+    observation_modalities:
+      - rgb
+      - depth
+      - point-cloud
+      - language
+      - 3d-annotations
+    action_space:
+      - offline-dataset-evaluation
+    metrics:
+      - visual-grounding
+      - question-answering
+      - grounded-captioning
+    links:
+      project: https://tai-wang.github.io/mmscan/
+      code: https://github.com/InternRobotics/EmbodiedScan
+      leaderboard: null
+      paper: https://arxiv.org/abs/2406.09401
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    notes: Hierarchical grounded language benchmark over 3D scenes, useful for spatial reasoning components in embodied navigation systems.
 
   - id: soundspaces
     name: SoundSpaces
@@ -497,6 +816,52 @@ benchmarks:
     foundation_model_relevance: high
     sim_to_real_relevance: medium
     notes: Navigation is part of a broader social mobile manipulation challenge.
+
+  - id: ovmm
+    name: HomeRobot Open-Vocabulary Mobile Manipulation
+    year: 2023
+    task_family:
+      - open-vocabulary-mobile-manipulation
+      - object-navigation
+      - mobile-manipulation
+    environment_type:
+      - indoor
+      - simulation
+      - real-world
+    simulator:
+      name: Habitat / HomeRobot
+      url: https://github.com/facebookresearch/home-robot
+    dataset:
+      name: OVMM Dataset
+      url: https://ovmm.github.io/
+      access: public-with-terms
+    goal_type:
+      - natural-language-object-and-receptacle
+      - pick-and-place
+    observation_modalities:
+      - rgb
+      - depth
+      - robot-state
+      - open-vocabulary-detections
+    action_space:
+      - continuous-navigation
+      - continuous-manipulation
+      - interactive-actions
+    metrics:
+      - overall-success
+      - partial-success
+      - number-of-steps
+    links:
+      project: https://ovmm.github.io/
+      code: https://github.com/facebookresearch/home-robot
+      leaderboard: https://aihabitat.org/challenge/2023_homerobot_ovmm/
+      paper: https://arxiv.org/abs/2306.11565
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    notes: OVMM requires navigating in unfamiliar homes, finding novel objects and receptacles, grasping, and placing; HomeRobot also maintained a CVPR 2024 challenge tag.
 
   - id: aerialvln
     name: AerialVLN

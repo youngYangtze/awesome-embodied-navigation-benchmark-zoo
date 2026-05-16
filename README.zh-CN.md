@@ -22,13 +22,14 @@
 
 - 以导航为核心的具身智能 benchmark。
 - 导航是更大具身任务核心组成部分的 benchmark。
+- 与导航评测直接相关的空间理解和移动操作 benchmark。
 - dataset、simulator、evaluation、baseline code 链接。
 - 面向实践的可复现说明。
 
 不包含：
 
 - 没有 benchmark 的通用机器人导航库。
-- 纯 mapping、perception、manipulation 或 autonomous driving benchmark，除非导航是核心任务。
+- 纯 mapping、perception、manipulation 或 autonomous driving benchmark，除非导航是核心任务，或条目被明确标为 navigation-adjacent。
 - 只有论文、缺少公开 benchmark 信息的条目。
 
 ## 仓库规划
@@ -40,9 +41,13 @@
 | 任务族                            | 核心问题                                           | 示例                                                      |
 | --------------------------------- | -------------------------------------------------- | --------------------------------------------------------- |
 | Point / Image / Object Navigation | 智能体能否到达坐标、图像目标、物体实例或物体类别？ | Habitat PointNav、ObjectNav、ImageNav；RoboTHOR ObjectNav |
+| Open-Vocabulary / Universal Navigation | 智能体能否导航到闭集类别之外的自由文本、图像或语言目标？ | HM3D-OVON、GOAT-Bench |
 | Vision-Language Navigation        | 智能体能否根据自然语言指令在环境中导航？           | R2R、RxR、REVERIE、VLN-CE                                 |
+| Physical / Cross-Embodiment VLN   | VLN 在真实机器人形态、物理控制和视觉变化下是否仍然有效？ | VLN-CE-Isaac、VLN-PE |
 | Embodied QA / Exploration         | 智能体能否探索环境或使用记忆回答空间相关问题？     | OpenEQA                                                   |
+| Spatial Scene Understanding       | 模型能否理解 egocentric 3D 场景，并支撑下游导航？ | EmbodiedScan、MMScan |
 | Social / Human-Aware Navigation   | 智能体能否在人类或其他智能体周围安全、合适地移动？ | SocNavBench、SMM Challenge                                |
+| Mobile Manipulation Navigation    | 智能体能否在 open-vocabulary manipulation 或 rearrangement 中完成导航？ | HomeRobot OVMM |
 | Audio-Visual Navigation           | 智能体能否结合声音和视觉定位并导航到目标？         | SoundSpaces                                               |
 | Aerial / Outdoor Navigation       | UAV 或户外智能体能否基于语言、目标或空间推理导航？ | AerialVLN、AVDN                                           |
 
@@ -77,6 +82,90 @@ Habitat Navigation Challenge 2023 在 Habitat 生态中使用 HM3D-Semantics 评
 - 物体类别导航与目标图像导航。
 - 室内仿真，包含 RGB、depth 和 GPS/compass observations。
 - 适合比较经典导航 pipeline、学习型 policy 和面向 sim-to-real 的 agent。
+
+</details>
+
+#### ▸ Habitat ObjectNav Challenge 2024/2025 Protocol
+
+AI Habitat team / community leaderboard users
+Challenge protocol, 2024. [Project](https://aihabitat.org/challenge/2023/) | [Code](https://github.com/facebookresearch/habitat-challenge) | [Leaderboard](https://eval.ai/web/challenges/challenge-page/1992/overview) | [Paper](https://arxiv.org/abs/2006.13171)
+
+**Framework**
+
+- Simulator：Habitat。
+- Dataset：HM3D-Semantics v0.2 ObjectNav。
+- Action space：continuous velocity、waypoint 和 discrete-waypoint variants。
+- Metrics：Success、SPL、SoftSPL、distance-to-goal、collisions。
+- Reproducibility：`archival`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+该条目记录 2024/2025 年论文和 leaderboard 实践中继续使用的 Habitat ObjectNav benchmark protocol。官方代码仓库在 2023 年后已归档，因此这里保守标为 archival，而不是把它写成新的官方年度挑战页。
+
+**Benchmark focus**
+
+- 基于 HM3D-Semantics 目标类别的 closed-set ObjectNav。
+- 适合将后续 ObjectNav 方法与既有 Habitat leaderboard protocol 对齐比较。
+- 策展注意：未找到独立的 2024/2025 官方 ObjectNav challenge 页面。
+
+</details>
+
+#### ▸ HM3D-OVON
+
+Yokoyama et al.
+Benchmark, 2024. [Project](https://naoki.io/portfolio/ovon) | [Code](https://github.com/naokiyokoyama/ovon) | [Paper](https://arxiv.org/abs/2409.14296)
+
+**Framework**
+
+- Simulator：Habitat。
+- Dataset：HM3D-OVON。
+- Action space：discrete。
+- Metrics：Success、SPL、distance-to-goal。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+HM3D-OVON 将 HM3D-Semantics ObjectNav 扩展到 open-vocabulary object goals，用自由文本目标覆盖数百个物体类别，而不是少量闭集类别。
+
+**Benchmark focus**
+
+- 真实室内扫描中的 open-vocabulary object-goal navigation。
+- 测试时使用 free-form text 指定目标。
+- 适合评估 VLM/LLM 辅助的 semantic exploration 与 open-set object grounding。
+
+</details>
+
+#### ▸ GOAT-Bench
+
+Khanna et al.
+Benchmark, 2024. [Project](https://mukulkhanna.github.io/goat-bench/) | [Code](https://github.com/Ram81/goat-bench) | [Paper](https://openaccess.thecvf.com/content/CVPR2024/html/Khanna_GOAT-Bench_A_Benchmark_for_Multi-Modal_Lifelong_Navigation_CVPR_2024_paper.html)
+
+**Framework**
+
+- Simulator：Habitat。
+- Dataset：GOAT-Bench on HM3D。
+- Action space：discrete。
+- Metrics：Success、SPL、subtask success、lifelong progress。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+GOAT-Bench 评估 GO to AnyThing：agent 需要在同一个持久室内环境中完成 5-10 个连续导航子任务，目标可由类别、语言描述或实例图像指定。
+
+**Benchmark focus**
+
+- 覆盖 object、language 和 image goals 的多模态目标指定。
+- 跨连续子任务复用记忆的 lifelong navigation。
+- 适合评估 universal navigation agent 和 foundation-model semantic memory 系统。
 
 </details>
 
@@ -248,6 +337,62 @@ VLN-CE 将 instruction-following 从图节点上的离散导航转为连续 3D �
 
 </details>
 
+#### ▸ VLN-CE-Isaac / NaVILA-Bench
+
+Cheng et al.
+Benchmark, 2025. [Project](https://navila-bot.github.io/) | [Code](https://github.com/yang-zj1026/NaVILA-Bench) | [Paper](https://arxiv.org/abs/2412.04453)
+
+**Framework**
+
+- Simulator：Isaac Lab / Isaac Sim。
+- Dataset：VLN-CE-Isaac。
+- Action space：high-level language actions 与 low-level continuous locomotion control。
+- Metrics：success rate、SPL、navigation error。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+VLN-CE-Isaac 是 NaVILA 提出的 Isaac Lab benchmark，用来在物理真实的低层机器人控制下评估 VLN-CE 风格的指令跟随。
+
+**Benchmark focus**
+
+- 面向四足和人形机器人的 vision-language navigation。
+- 测试高层 VLN 决策与可执行 locomotion 之间的差距。
+- 适合评估结合 language planning 与机器人技能的 VLA navigation 系统。
+
+</details>
+
+#### ▸ VLN-PE
+
+Wang et al.
+Benchmark, 2025. [Project](https://crystalsixone.github.io/vln_pe.github.io/) | [Code](https://github.com/InternRobotics/InternNav) | [Paper](https://openaccess.thecvf.com/content/ICCV2025/html/Wang_Rethinking_the_Embodied_Gap_in_Vision-and-Language_Navigation_A_Holistic_Study_ICCV_2025_paper.html)
+
+**Framework**
+
+- Simulator：Isaac Sim / InternNav。
+- Dataset：VLN-PE、GRU-VLN10 和 3DGS-Lab-VLN。
+- Action space：discrete action prediction、dense waypoint prediction、map-based planning、physical controller。
+- Metrics：navigation error、oracle success rate、success rate、SPL。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+VLN-PE 研究 VLN 的 embodied gap，在真实 locomotion、observation、lighting 和 environment shift 下评估人形、四足和轮式机器人。
+
+**Benchmark focus**
+
+- 跨多种机器人形态的 cross-embodiment VLN。
+- 覆盖标准 VLN-CE 假设之外的物理与视觉差异。
+- 适合测试 VLN 模型能否从 simulator-friendly motion 迁移到可部署机器人控制。
+
+</details>
+
 #### ▸ Cooperative Vision-and-Dialog Navigation (CVDN)
 
 Thomason et al.
@@ -301,6 +446,62 @@ OpenEQA 评估具身 agent 能否基于 episodic memory 或 active exploration �
 - 真实世界与仿真环境中的 embodied question answering。
 - 使用 open-vocabulary answer 评估 foundation model。
 - 适合研究 spatial memory、exploration 和 environment understanding。
+
+</details>
+
+#### ▸ EmbodiedScan
+
+Wang et al.
+Benchmark suite, 2024. [Project](https://tai-wang.github.io/embodiedscan/) | [Code](https://github.com/InternRobotics/EmbodiedScan) | [Paper](https://arxiv.org/abs/2312.16170)
+
+**Framework**
+
+- Environment：egocentric RGB-D real-world scans。
+- Dataset：EmbodiedScan。
+- Action setting：offline dataset evaluation。
+- Metrics：3D detection、semantic occupancy、visual grounding、language-grounded understanding。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+EmbodiedScan 是 navigation-adjacent 的 3D perception suite，用于 holistic egocentric scene understanding，包含多视角 RGB-D observations、3D annotations 与 language prompts。
+
+**Benchmark focus**
+
+- 面向 embodied agents 的 egocentric 3D perception。
+- Scene understanding 与 language-grounded spatial perception。
+- 可作为 navigation 系统的 perception 与 memory substrate，但不直接评估 active navigation policy。
+
+</details>
+
+#### ▸ MMScan
+
+Lyu et al.
+Benchmark suite, 2024. [Project](https://tai-wang.github.io/mmscan/) | [Code](https://github.com/InternRobotics/EmbodiedScan) | [Paper](https://arxiv.org/abs/2406.09401)
+
+**Framework**
+
+- Environment：带 grounded language annotations 的 real-world 3D scans。
+- Dataset：MMScan。
+- Action setting：offline dataset evaluation。
+- Metrics：visual grounding、question answering、grounded captioning。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+MMScan 为 3D 场景构建 hierarchical grounded language annotations，覆盖 object-level 与 region-level captions、visual grounding 和 spatial question answering。
+
+**Benchmark focus**
+
+- 结合语言的 multi-modal 3D scene understanding。
+- 围绕 objects、regions、attributes 和 relationships 的 spatial reasoning。
+- 适合评估 embodied navigation agent 所需的 language-grounded scene understanding。
 
 </details>
 
@@ -385,6 +586,34 @@ Social Mobile Manipulation Challenge 在社会动态环境中评估长时程具�
 - 带有社会交互约束的导航。
 - Scene-graph prompts 与 multi-agent dynamics。
 - 适合评估结合 planning、navigation 和 interaction 的 foundation-model agent。
+
+</details>
+
+#### ▸ HomeRobot Open-Vocabulary Mobile Manipulation (OVMM)
+
+Yenamandra et al. / HomeRobot team
+Benchmark and challenge, 2023. [Project](https://ovmm.github.io/) | [Code](https://github.com/facebookresearch/home-robot) | [Leaderboard](https://aihabitat.org/challenge/2023_homerobot_ovmm/) | [Paper](https://arxiv.org/abs/2306.11565)
+
+**Framework**
+
+- Simulator：Habitat / HomeRobot。
+- Dataset：OVMM Dataset。
+- Action space：continuous navigation 和 manipulation，并包含 interactive actions。
+- Metrics：overall success、partial success、number of steps。
+- Reproducibility：`partial`。
+
+<details>
+<summary>展开 Summary 与 Benchmark focus</summary>
+
+**Summary**
+
+HomeRobot OVMM 评估 mobile manipulator 能否在陌生家庭环境中导航、寻找新物体和目标 receptacle、抓取物体并放置到指定位置。
+
+**Benchmark focus**
+
+- 将导航作为 open-vocabulary mobile manipulation 的必要子问题。
+- 同时包含仿真评测和真实 Stretch robot counterpart。
+- 适合评估结合 open-vocabulary perception、exploration、navigation、grasping 和 placement 的 agent。
 
 </details>
 

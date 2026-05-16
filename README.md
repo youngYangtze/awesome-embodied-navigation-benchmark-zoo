@@ -22,13 +22,14 @@ Included:
 
 - Navigation-centric embodied AI benchmarks.
 - Benchmarks where navigation is a core component of a broader embodied task.
+- Navigation-adjacent spatial understanding and mobile-manipulation benchmarks when they directly support embodied navigation evaluation.
 - Dataset, simulator, evaluation, and baseline-code links.
 - Practical reproducibility notes.
 
 Not included:
 
 - Generic robotics navigation libraries without a benchmark.
-- Pure mapping, perception, manipulation, or autonomous driving benchmarks unless navigation is central.
+- Pure mapping, perception, manipulation, or autonomous driving benchmarks unless navigation is central or the entry is explicitly marked navigation-adjacent.
 - Paper-only entries without enough public benchmark information.
 
 ## Repository Plan
@@ -40,9 +41,13 @@ The zoo groups benchmarks by task family rather than by paper chronology.
 | Family                            | Core question                                                                      | Examples                                                  |
 | --------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | Point / Image / Object Navigation | Can the agent reach a coordinate, image goal, object instance, or object category? | Habitat PointNav, ObjectNav, ImageNav; RoboTHOR ObjectNav |
+| Open-Vocabulary / Universal Navigation | Can the agent navigate to free-form, image, or language-specified goals beyond a closed category set? | HM3D-OVON, GOAT-Bench |
 | Vision-Language Navigation        | Can the agent follow natural-language instructions through an environment?         | R2R, RxR, REVERIE, VLN-CE                                 |
+| Physical / Cross-Embodiment VLN   | Does VLN still work under realistic robot embodiment, physics, and visual shifts? | VLN-CE-Isaac, VLN-PE                                      |
 | Embodied QA / Exploration         | Can the agent explore or use memory to answer questions about a space?             | OpenEQA                                                   |
+| Spatial Scene Understanding       | Can a model understand egocentric 3D scenes enough to support downstream navigation? | EmbodiedScan, MMScan                                      |
 | Social / Human-Aware Navigation   | Can the agent move safely and appropriately around humans or other agents?         | SocNavBench, SMM Challenge                                |
+| Mobile Manipulation Navigation    | Can the agent navigate as part of open-vocabulary manipulation or rearrangement?   | HomeRobot OVMM                                            |
 | Audio-Visual Navigation           | Can the agent use sound and vision to localize and navigate to goals?              | SoundSpaces                                               |
 | Aerial / Outdoor Navigation       | Can a UAV or outdoor agent navigate using language, goals, or spatial reasoning?   | AerialVLN, AVDN                                           |
 
@@ -77,6 +82,90 @@ Habitat Navigation Challenge 2023 evaluates ObjectNav and ImageNav in HM3D-Seman
 - Object-category and goal-image navigation.
 - Indoor simulation with RGB, depth, and GPS/compass observations.
 - Useful for comparing classical navigation pipelines, learned policies, and sim-to-real-oriented agents.
+
+</details>
+
+#### ▸ Habitat ObjectNav Challenge 2024/2025 Protocol
+
+AI Habitat team / community leaderboard users
+Challenge protocol, 2024. [Project](https://aihabitat.org/challenge/2023/) | [Code](https://github.com/facebookresearch/habitat-challenge) | [Leaderboard](https://eval.ai/web/challenges/challenge-page/1992/overview) | [Paper](https://arxiv.org/abs/2006.13171)
+
+**Framework**
+
+- Simulator: Habitat.
+- Dataset: HM3D-Semantics v0.2 ObjectNav.
+- Action space: continuous velocity, waypoint, and discrete-waypoint variants.
+- Metrics: Success, SPL, SoftSPL, distance-to-goal, collisions.
+- Reproducibility: `archival`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+This entry tracks later 2024/2025 use of the Habitat ObjectNav benchmark protocol built around the 2023 HM3D-Semantics v0.2 challenge. The official challenge repository is read-only, so the entry is marked archival rather than treated as a new official annual challenge page.
+
+**Benchmark focus**
+
+- Closed-set ObjectNav over HM3D-Semantics goal categories.
+- Useful for comparing later ObjectNav papers against the established Habitat leaderboard protocol.
+- Important caveat: no separate official 2024/2025 ObjectNav challenge page was found during curation.
+
+</details>
+
+#### ▸ HM3D-OVON
+
+Yokoyama et al.
+Benchmark, 2024. [Project](https://naoki.io/portfolio/ovon) | [Code](https://github.com/naokiyokoyama/ovon) | [Paper](https://arxiv.org/abs/2409.14296)
+
+**Framework**
+
+- Simulator: Habitat.
+- Dataset: HM3D-OVON.
+- Action space: discrete.
+- Metrics: Success, SPL, distance-to-goal.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+HM3D-OVON extends HM3D-Semantics ObjectNav to open-vocabulary object goals, with free-form language targets over hundreds of object categories rather than a small closed set.
+
+**Benchmark focus**
+
+- Open-vocabulary object-goal navigation in real-world indoor scans.
+- Free-form text goal specification at test time.
+- Strong fit for VLM/LLM-assisted semantic exploration and open-set object grounding.
+
+</details>
+
+#### ▸ GOAT-Bench
+
+Khanna et al.
+Benchmark, 2024. [Project](https://mukulkhanna.github.io/goat-bench/) | [Code](https://github.com/Ram81/goat-bench) | [Paper](https://openaccess.thecvf.com/content/CVPR2024/html/Khanna_GOAT-Bench_A_Benchmark_for_Multi-Modal_Lifelong_Navigation_CVPR_2024_paper.html)
+
+**Framework**
+
+- Simulator: Habitat.
+- Dataset: GOAT-Bench on HM3D.
+- Action space: discrete.
+- Metrics: Success, SPL, subtask success, lifelong progress.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+GOAT-Bench evaluates GO to AnyThing: an agent must solve 5-10 sequential navigation subtasks in a persistent indoor environment, with targets specified by category, language description, or instance image.
+
+**Benchmark focus**
+
+- Multi-modal goal specification across object, language, and image goals.
+- Lifelong navigation with memory reused across sequential subtasks.
+- Useful for universal navigation agents and foundation-model semantic memory systems.
 
 </details>
 
@@ -248,6 +337,62 @@ VLN-CE converts instruction-following from graph-discrete navigation into contin
 
 </details>
 
+#### ▸ VLN-CE-Isaac / NaVILA-Bench
+
+Cheng et al.
+Benchmark, 2025. [Project](https://navila-bot.github.io/) | [Code](https://github.com/yang-zj1026/NaVILA-Bench) | [Paper](https://arxiv.org/abs/2412.04453)
+
+**Framework**
+
+- Simulator: Isaac Lab / Isaac Sim.
+- Dataset: VLN-CE-Isaac.
+- Action space: high-level language actions and low-level continuous locomotion control.
+- Metrics: success rate, SPL, navigation error.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+VLN-CE-Isaac is the NaVILA benchmark for evaluating VLN-CE-style instruction following under physics-realistic low-level robot control in Isaac Lab.
+
+**Benchmark focus**
+
+- Vision-language navigation with quadruped and humanoid robot control.
+- Tests the gap between high-level VLN decisions and executable locomotion.
+- Useful for VLA navigation systems that combine language planning with learned robot skills.
+
+</details>
+
+#### ▸ VLN-PE
+
+Wang et al.
+Benchmark, 2025. [Project](https://crystalsixone.github.io/vln_pe.github.io/) | [Code](https://github.com/InternRobotics/InternNav) | [Paper](https://openaccess.thecvf.com/content/ICCV2025/html/Wang_Rethinking_the_Embodied_Gap_in_Vision-and-Language_Navigation_A_Holistic_Study_ICCV_2025_paper.html)
+
+**Framework**
+
+- Simulator: Isaac Sim / InternNav.
+- Dataset: VLN-PE, GRU-VLN10, and 3DGS-Lab-VLN.
+- Action space: discrete action prediction, dense waypoint prediction, map-based planning, physical controller.
+- Metrics: navigation error, oracle success rate, success rate, SPL.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+VLN-PE studies the embodied gap in VLN by evaluating humanoid, quadruped, and wheeled robots under realistic locomotion, observation, lighting, and environment shifts.
+
+**Benchmark focus**
+
+- Cross-embodiment VLN across multiple robot morphologies.
+- Physical and visual disparities beyond standard VLN-CE assumptions.
+- Useful for testing whether VLN models can transfer from simulator-friendly motion to deployable robot control.
+
+</details>
+
 #### ▸ Cooperative Vision-and-Dialog Navigation (CVDN)
 
 Thomason et al.
@@ -301,6 +446,62 @@ OpenEQA evaluates whether embodied agents can answer open-vocabulary questions a
 - Embodied question answering in real-world and simulated environments.
 - Foundation-model evaluation with open-vocabulary answers.
 - Useful for studying spatial memory, exploration, and environment understanding.
+
+</details>
+
+#### ▸ EmbodiedScan
+
+Wang et al.
+Benchmark suite, 2024. [Project](https://tai-wang.github.io/embodiedscan/) | [Code](https://github.com/InternRobotics/EmbodiedScan) | [Paper](https://arxiv.org/abs/2312.16170)
+
+**Framework**
+
+- Environment: egocentric RGB-D real-world scans.
+- Dataset: EmbodiedScan.
+- Action setting: offline dataset evaluation.
+- Metrics: 3D detection, semantic occupancy, visual grounding, language-grounded understanding.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+EmbodiedScan is a navigation-adjacent 3D perception suite for holistic egocentric scene understanding, with multi-view RGB-D observations, 3D annotations, and language prompts.
+
+**Benchmark focus**
+
+- Egocentric 3D perception for embodied agents.
+- Scene understanding and language-grounded spatial perception.
+- Useful as a perception and memory substrate for navigation systems, but it does not evaluate active navigation policies directly.
+
+</details>
+
+#### ▸ MMScan
+
+Lyu et al.
+Benchmark suite, 2024. [Project](https://tai-wang.github.io/mmscan/) | [Code](https://github.com/InternRobotics/EmbodiedScan) | [Paper](https://arxiv.org/abs/2406.09401)
+
+**Framework**
+
+- Environment: real-world 3D scans with grounded language annotations.
+- Dataset: MMScan.
+- Action setting: offline dataset evaluation.
+- Metrics: visual grounding, question answering, grounded captioning.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+MMScan builds hierarchical grounded language annotations for 3D scenes, covering object-level and region-level captions, visual grounding, and spatial question answering.
+
+**Benchmark focus**
+
+- Multi-modal 3D scene understanding with language.
+- Spatial reasoning over objects, regions, attributes, and relationships.
+- Useful for evaluating the language-grounded scene understanding needed by embodied navigation agents.
 
 </details>
 
@@ -385,6 +586,34 @@ The Social Mobile Manipulation Challenge evaluates long-horizon embodied agents 
 - Navigation under social interaction constraints.
 - Scene-graph prompts and multi-agent dynamics.
 - Useful for foundation-model agents that combine planning, navigation, and interaction.
+
+</details>
+
+#### ▸ HomeRobot Open-Vocabulary Mobile Manipulation (OVMM)
+
+Yenamandra et al. / HomeRobot team
+Benchmark and challenge, 2023. [Project](https://ovmm.github.io/) | [Code](https://github.com/facebookresearch/home-robot) | [Leaderboard](https://aihabitat.org/challenge/2023_homerobot_ovmm/) | [Paper](https://arxiv.org/abs/2306.11565)
+
+**Framework**
+
+- Simulator: Habitat / HomeRobot.
+- Dataset: OVMM Dataset.
+- Action space: continuous navigation and manipulation with interactive actions.
+- Metrics: overall success, partial success, number of steps.
+- Reproducibility: `partial`.
+
+<details>
+<summary>Expand Summary and Benchmark focus</summary>
+
+**Summary**
+
+HomeRobot OVMM evaluates whether a mobile manipulator can navigate unfamiliar homes, find novel objects and receptacles, grasp the object, and place it in the requested location.
+
+**Benchmark focus**
+
+- Navigation as a required subproblem inside open-vocabulary mobile manipulation.
+- Simulation plus real-world Stretch robot counterpart.
+- Useful for agents that integrate open-vocabulary perception, exploration, navigation, grasping, and placement.
 
 </details>
 
