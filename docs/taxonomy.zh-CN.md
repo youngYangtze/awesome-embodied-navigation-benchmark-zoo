@@ -91,6 +91,17 @@ benchmark 将导航作为 manipulation、rearrangement 或 pick-and-place 任务
 - environment：simulated home、physical robot setup、articulated or cluttered scene
 - metrics：overall success、partial success、steps、collisions、interaction success
 
+## Rearrangement 与长时程具身活动
+
+benchmark 评估完成一个家务式任务所需的导航、感知与交互完整链条。导航只是众多必需技能之一，而非任务的全部。
+
+关键比较维度：
+
+- task specification：language instruction、dialog、logical goal condition、demonstration
+- horizon：单房间 rearrangement、多房间家务活动、整日活动
+- environment：ReplicaCAD、HSSD、AI2-THOR、OmniGibson、GRUtopia / GRScenes
+- metrics：task success、goal-condition success、sub-goal progress、efficiency、steps
+
 ## Audio-Visual Navigation
 
 智能体结合 audio 与 visual observation，定位或导航到发声目标。

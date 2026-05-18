@@ -18,6 +18,8 @@
 - observation modalities
 - action space
 - metrics
+- 数据规模（episode / scene / instruction 等）
+- license（代码与数据的 license，并标注上游资产的特殊条款）
 - 官方项目、代码、论文和 leaderboard 链接，如果可用
 - reproducibility status
 

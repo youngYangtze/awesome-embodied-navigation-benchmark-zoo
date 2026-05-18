@@ -18,6 +18,8 @@ Please update `data/benchmarks.yml` and include:
 - observation modalities
 - action space
 - metrics
+- dataset size (e.g. number of episodes, scenes, instructions)
+- license (license of code and data, with caveats for upstream assets)
 - official project, code, paper, and leaderboard links where available
 - reproducibility status
 

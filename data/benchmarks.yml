@@ -1,4 +1,47 @@
 benchmarks:
+  - id: habitat-pointnav-2020
+    name: Habitat PointNav Challenge 2020
+    year: 2020
+    task_family:
+      - point-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat-Sim
+      url: https://github.com/facebookresearch/habitat-sim
+    dataset:
+      name: Gibson PointNav and MP3D PointNav splits
+      url: https://aihabitat.org/challenge/2020/
+      access: public-with-terms
+    goal_type:
+      - point-coordinate
+    observation_modalities:
+      - rgb
+      - depth
+      - gps-compass
+    action_space:
+      - discrete
+      - continuous-velocity-track
+    metrics:
+      - success
+      - spl
+      - soft-spl
+      - distance-to-goal
+    links:
+      project: https://aihabitat.org/challenge/2020/
+      code: https://github.com/facebookresearch/habitat-challenge
+      leaderboard: https://eval.ai/web/challenges/challenge-page/802/overview
+      paper: https://arxiv.org/abs/1912.06321
+    leaderboard_status: archival
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: low
+    sim_to_real_relevance: high
+    dataset_size: 72 train and 18 validation MP3D scenes; held-out test episodes for PointNav and ObjectNav tracks.
+    license: MIT (challenge code); MP3D and Gibson research terms for assets.
+    notes: Canonical PointNav benchmark; the 2020 track also introduced ObjectNav. Used widely for sim-to-real PointNav evaluation.
+
   - id: habitat-navigation-2023
     name: Habitat Navigation Challenge 2023
     year: 2023
@@ -42,6 +85,8 @@ benchmarks:
     reproducibility_status: verified
     foundation_model_relevance: medium
     sim_to_real_relevance: high
+    dataset_size: HM3D-Semantics v0.2 with ~145 train and 36 validation scenes; ObjectNav and ImageNav episode sets.
+    license: MIT (challenge code); HM3D-Semantics research terms for the dataset.
     notes: Uses Hello Robot Stretch configuration and HM3D-Semantics v0.2.
 
   - id: habitat-objectnav-2024-2025
@@ -86,7 +131,51 @@ benchmarks:
     reproducibility_status: archival
     foundation_model_relevance: medium
     sim_to_real_relevance: high
+    dataset_size: Same 145 train and 36 validation HM3D-Semantics scenes; ~80k train and several thousand val ObjectNav episodes.
+    license: MIT (challenge code); HM3D-Semantics research terms.
     notes: No separate official 2024/2025 ObjectNav page was found; this tracks continued use of the 2023 HM3D ObjectNav protocol in later papers and leaderboards.
+
+  - id: instance-imagenav-hm3d
+    name: Instance-ImageNav (HM3D)
+    year: 2023
+    task_family:
+      - image-navigation
+      - instance-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/facebookresearch/habitat-lab
+    dataset:
+      name: Instance-ImageNav on HM3D-Semantics
+      url: https://jacobkrantz.github.io/modular_iin
+      access: public-with-hm3d-terms
+    goal_type:
+      - instance-image
+    observation_modalities:
+      - rgb
+      - depth
+      - pose
+    action_space:
+      - discrete
+    metrics:
+      - success
+      - spl
+      - distance-to-goal
+    links:
+      project: https://jacobkrantz.github.io/modular_iin
+      code: https://github.com/Jbwasse2/modular_iin
+      leaderboard: null
+      paper: https://arxiv.org/abs/2304.01192
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    dataset_size: ~1,000 instance-image goal episodes across HM3D-Semantics validation scenes; baselines on full HM3D train split.
+    license: MIT (code); HM3D research terms.
+    notes: Modular Instance-ImageNav (Krantz et al., ICCV 2023); important reference for object-instance specific image-goal navigation.
 
   - id: hm3d-ovon
     name: HM3D-OVON
@@ -129,6 +218,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: 379 object categories with ~15k annotated instances across HM3D-Semantics scenes; free-form language goals.
+    license: MIT (code); HM3D research terms.
     notes: Expands HM3DSem ObjectNav to over 15k annotated object instances and 379 categories with free-form language goals.
 
   - id: goat-bench
@@ -175,6 +266,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: Lifelong episodes with 5-10 sequential subtasks; covers HM3D-Semantics scenes and three goal modalities.
+    license: MIT (code); HM3D research terms.
     notes: GO to AnyThing episodes require 5-10 sequential open-vocabulary goals specified by category, language, or image.
 
   - id: robothor-objectnav
@@ -214,7 +307,50 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: medium
     sim_to_real_relevance: high
+    dataset_size: 75 simulated apartment scenes with paired real RoboTHOR apartments; 12 object goal categories.
+    license: Apache-2.0 (AI2-THOR / RoboTHOR code and assets).
     notes: Important for sim-to-real ObjectNav evaluation.
+
+  - id: procthor-objectnav
+    name: ProcTHOR ObjectNav
+    year: 2022
+    task_family:
+      - object-navigation
+      - procedural-environments
+    environment_type:
+      - indoor
+      - simulation
+      - procedural
+    simulator:
+      name: AI2-THOR / ProcTHOR
+      url: https://github.com/allenai/procthor
+    dataset:
+      name: ProcTHOR-10K
+      url: https://procthor.allenai.org/
+      access: public
+    goal_type:
+      - object-category
+    observation_modalities:
+      - rgb
+      - depth
+    action_space:
+      - discrete
+    metrics:
+      - success
+      - spl
+    links:
+      project: https://procthor.allenai.org/
+      code: https://github.com/allenai/procthor-10k
+      leaderboard: null
+      paper: https://arxiv.org/abs/2206.06994
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: medium
+    sim_to_real_relevance: medium
+    dataset_size: 10,000 procedurally generated multi-room houses built from 1,633 assets across 18 semantic groups.
+    license: Apache-2.0 (ProcTHOR code and procedural assets).
+    notes: NeurIPS 2022 outstanding paper; ProcTHOR-10K is widely used as a pre-training environment for ObjectNav agents.
 
   - id: multion
     name: MultiON
@@ -254,6 +390,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: medium
     sim_to_real_relevance: medium
+    dataset_size: Sequences of 3-5 object goals over MP3D scenes; multiple episode generations for 2021/2022/2023 tracks.
+    license: MIT (code); MP3D research terms.
     notes: Long-horizon extension of object navigation with multiple sequential goals.
 
   - id: r2r
@@ -294,6 +432,8 @@ benchmarks:
     reproducibility_status: verified
     foundation_model_relevance: high
     sim_to_real_relevance: low
+    dataset_size: 21,567 human-written instructions over 7,189 paths in 90 Matterport3D buildings.
+    license: BSD-3-Clause (Matterport3D Simulator); MP3D research terms.
     notes: Canonical VLN benchmark in Matterport3D environments.
 
   - id: rxr
@@ -337,6 +477,8 @@ benchmarks:
     reproducibility_status: archival
     foundation_model_relevance: high
     sim_to_real_relevance: low
+    dataset_size: ~126,069 instructions in English, Hindi, and Telugu over 16,522 paths in MP3D.
+    license: CC-BY-4.0 (dataset); MP3D research terms.
     notes: Large multilingual VLN dataset with dense spatiotemporal grounding.
 
   - id: reverie
@@ -379,6 +521,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: low
+    dataset_size: 21,702 instructions over 4,140 target objects in 86 MP3D buildings.
+    license: see project; MP3D research terms.
     notes: Combines navigation with remote object grounding.
 
   - id: vln-ce
@@ -421,7 +565,52 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: ~16k instructions converted from R2R and RxR into continuous Habitat episodes over MP3D scenes.
+    license: MIT (code); MP3D research terms.
     notes: Continuous-space VLN benchmark built on Habitat.
+
+  - id: touchdown
+    name: Touchdown
+    year: 2019
+    task_family:
+      - vision-language-navigation
+      - outdoor-navigation
+      - street-view-navigation
+    environment_type:
+      - outdoor
+      - real-world-imagery
+    simulator:
+      name: StreetLearn (Manhattan panoramas)
+      url: https://github.com/lil-lab/touchdown
+    dataset:
+      name: Touchdown
+      url: https://github.com/lil-lab/touchdown
+      access: public-with-streetlearn-terms
+    goal_type:
+      - natural-language-route-instruction
+      - spatial-description-resolution
+    observation_modalities:
+      - panoramic-streetview-rgb
+      - language
+    action_space:
+      - graph-discrete-streetview
+    metrics:
+      - task-completion
+      - sdtw
+      - spatial-description-accuracy
+    links:
+      project: https://github.com/lil-lab/touchdown
+      code: https://github.com/lil-lab/touchdown
+      leaderboard: null
+      paper: https://arxiv.org/abs/1811.12354
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    dataset_size: 9,326 instruction+spatial-description examples over ~29k Manhattan Street View panoramas.
+    license: CC-BY-4.0 (dataset); StreetLearn panorama access form required.
+    notes: Outdoor street-view VLN; complements indoor VLN benchmarks with urban scale and viewpoint diversity.
 
   - id: vln-ce-isaac-navila
     name: VLN-CE-Isaac / NaVILA-Bench
@@ -467,6 +656,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: high
+    dataset_size: VLN-CE episodes ported to Isaac Lab with quadruped and humanoid embodiments; baselines on standard VLN-CE splits.
+    license: see project (Isaac Sim assets follow NVIDIA terms).
     notes: Physics-realistic Isaac Lab benchmark from NaVILA for evaluating VLN-CE-style instruction following with legged robot control.
 
   - id: vln-pe
@@ -515,6 +706,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: high
+    dataset_size: Three episode sets (VLN-PE, GRU-VLN10, 3DGS-Lab-VLN) covering humanoid, quadruped, and wheeled embodiments under realistic locomotion and visual shifts.
+    license: see project (Isaac Sim and external scene assets follow upstream terms).
     notes: ICCV 2025 physical VLN benchmark covering humanoid, quadruped, and wheeled embodiments under realistic locomotion and visual shifts.
 
   - id: cvdn
@@ -554,6 +747,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: low
+    dataset_size: 2,050 human-human dialog sessions over MP3D environments with 7,000+ navigation episodes.
+    license: see project; MP3D research terms.
     notes: Dialog-based navigation with navigator-oracle interactions.
 
   - id: open-eqa
@@ -597,7 +792,96 @@ benchmarks:
     reproducibility_status: verified
     foundation_model_relevance: high
     sim_to_real_relevance: high
+    dataset_size: ~1,600 questions over 180+ real-world and HM3D scans; episodic-memory and active-exploration splits.
+    license: MIT (code); CC-BY-4.0 (annotations).
     notes: Evaluates open-vocabulary environmental understanding using episodic memory and active exploration.
+
+  - id: explore-eqa
+    name: Explore-EQA
+    year: 2024
+    task_family:
+      - embodied-question-answering
+      - active-exploration
+      - foundation-model-navigation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: Habitat
+      url: https://github.com/Stanford-ILIAD/explore-eqa
+    dataset:
+      name: HM-EQA
+      url: https://github.com/Stanford-ILIAD/explore-eqa
+      access: public
+    goal_type:
+      - open-vocabulary-question
+    observation_modalities:
+      - rgb
+      - depth
+      - camera-pose
+    action_space:
+      - active-exploration
+    metrics:
+      - answer-accuracy
+      - exploration-efficiency
+      - confidence-calibration
+    links:
+      project: https://explore-eqa.github.io/
+      code: https://github.com/Stanford-ILIAD/explore-eqa
+      leaderboard: null
+      paper: https://arxiv.org/abs/2403.15941
+    leaderboard_status: none
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    dataset_size: HM-EQA contains 500 questions across 267 HM3D scenes.
+    license: MIT (code); HM3D research terms.
+    notes: VLM-driven active EQA with confidence-aware stopping; RSS 2024.
+
+  - id: sqa3d
+    name: SQA3D
+    year: 2023
+    task_family:
+      - spatial-question-answering
+      - embodied-scene-understanding
+      - situated-reasoning
+    environment_type:
+      - indoor
+      - real-world-scans
+    simulator:
+      name: Dataset / benchmark suite
+      url: https://sqa3d.github.io/
+    dataset:
+      name: SQA3D
+      url: https://github.com/SilongYong/SQA3D
+      access: public
+    goal_type:
+      - situated-question
+      - 3d-scene-understanding
+    observation_modalities:
+      - rgb
+      - point-cloud
+      - egocentric-camera-pose
+      - language
+    action_space:
+      - offline-dataset-evaluation
+    metrics:
+      - answer-accuracy
+      - top-k-accuracy
+    links:
+      project: https://sqa3d.github.io/
+      code: https://github.com/SilongYong/SQA3D
+      leaderboard: null
+      paper: https://arxiv.org/abs/2210.07474
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    dataset_size: 650 ScanNet scenes; 6.8k situations; 20.4k descriptions; 33.4k question-answer pairs.
+    license: MIT (code); ScanNet research terms.
+    notes: Situated question answering grounded in agent pose within ScanNet scenes; foundational for spatial reasoning evaluation.
 
   - id: embodiedscan
     name: EmbodiedScan
@@ -643,6 +927,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: 5,185 scans across ScanNet, 3RScan, and MP3D with multi-view RGB-D, 3D oriented boxes, occupancy, and language prompts.
+    license: Apache-2.0 (code); upstream scan datasets follow their own research terms.
     notes: Navigation-adjacent benchmark for egocentric 3D scene understanding; no active navigation policy is evaluated.
 
   - id: mmscan
@@ -689,6 +975,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: ~109k object-level and ~7.7k region-level descriptions; 3.04M grounded QA pairs across EmbodiedScan scenes.
+    license: Apache-2.0 (code); upstream scan datasets follow their own research terms.
     notes: Hierarchical grounded language benchmark over 3D scenes, useful for spatial reasoning components in embodied navigation systems.
 
   - id: soundspaces
@@ -730,6 +1018,8 @@ benchmarks:
     reproducibility_status: verified
     foundation_model_relevance: medium
     sim_to_real_relevance: medium
+    dataset_size: Acoustic simulation over 85 MP3D and 18 Replica scenes; SoundSpaces 2.0 adds continuous on-the-fly rendering.
+    license: CC-BY-4.0 (audio data); MIT (code); MP3D and Replica research terms.
     notes: Adds realistic acoustic simulation to embodied navigation.
 
   - id: socnavbench
@@ -772,7 +1062,152 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: medium
     sim_to_real_relevance: medium
+    dataset_size: Curated scenario suite grounded in ETH/UCY pedestrian datasets across multiple test environments.
+    license: MIT (code); upstream pedestrian datasets follow their own terms.
     notes: Focuses on consistent evaluation for social navigation algorithms.
+
+  - id: habitat3-social-nav
+    name: Habitat 3.0 Social Navigation
+    year: 2024
+    task_family:
+      - social-navigation
+      - human-aware-navigation
+      - mobile-manipulation
+    environment_type:
+      - indoor
+      - simulation
+      - humanoid-avatars
+    simulator:
+      name: Habitat 3.0
+      url: https://aihabitat.org/habitat3/
+    dataset:
+      name: HSSD-Sem / ReplicaCAD social tasks
+      url: https://aihabitat.org/habitat3/
+      access: public-with-terms
+    goal_type:
+      - navigate-to-human
+      - find-human-and-rearrange
+    observation_modalities:
+      - rgb
+      - depth
+      - robot-state
+      - humanoid-pose
+    action_space:
+      - continuous-velocity
+      - high-level-skill
+      - manipulation
+    metrics:
+      - success-rate
+      - social-spl
+      - human-collision
+    links:
+      project: https://aihabitat.org/habitat3/
+      code: https://github.com/facebookresearch/habitat-lab
+      leaderboard: null
+      paper: https://arxiv.org/abs/2310.13724
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    dataset_size: Social Navigation and Social Rearrangement tasks across HSSD-Sem and ReplicaCAD scenes with humanoid avatars.
+    license: MIT (Habitat-Lab); HSSD and ReplicaCAD assets follow their own research terms.
+    notes: Habitat 3.0 introduces humanoid avatars for human-robot collaboration; ICLR 2024.
+
+  - id: habicrowd
+    name: HabiCrowd
+    year: 2024
+    task_family:
+      - social-navigation
+      - crowd-navigation
+      - point-navigation
+      - object-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - pedestrian-crowds
+    simulator:
+      name: HabiCrowd (Habitat 2.0 extension)
+      url: https://habicrowd.github.io/
+    dataset:
+      name: HabiCrowd
+      url: https://github.com/Fsoft-AIC/HabiCrowd
+      access: public
+    goal_type:
+      - point-coordinate
+      - object-category
+    observation_modalities:
+      - rgb
+      - depth
+      - pedestrian-state
+    action_space:
+      - discrete
+      - continuous-velocity
+    metrics:
+      - success
+      - spl
+      - human-collision
+      - personal-space-intrusion
+    links:
+      project: https://habicrowd.github.io/
+      code: https://github.com/Fsoft-AIC/HabiCrowd
+      leaderboard: null
+      paper: https://arxiv.org/abs/2306.11377
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: medium
+    sim_to_real_relevance: medium
+    dataset_size: Crowd-aware PointNav and ObjectNav episodes over HM3D scenes; five baseline planners and learners.
+    license: MIT (code); HM3D research terms.
+    notes: IROS 2024 high-performance crowd navigation benchmark built on Habitat 2.0.
+
+  - id: igibson-challenge-2021
+    name: iGibson Challenge 2021
+    year: 2021
+    task_family:
+      - interactive-navigation
+      - social-navigation
+      - point-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - interactive-physics
+    simulator:
+      name: iGibson 1.0
+      url: https://github.com/StanfordVL/iGibson
+    dataset:
+      name: iGibson interactive scenes
+      url: https://svl.stanford.edu/igibson/challenge2021.html
+      access: public
+    goal_type:
+      - point-coordinate
+      - human-aware-goal
+    observation_modalities:
+      - rgb
+      - depth
+      - lidar
+      - robot-state
+    action_space:
+      - continuous-velocity
+    metrics:
+      - success
+      - spl
+      - interactive-spl
+      - personal-space-intrusion
+    links:
+      project: https://svl.stanford.edu/igibson/challenge2021.html
+      code: https://github.com/StanfordVL/iGibsonChallenge2021
+      leaderboard: https://svl.stanford.edu/igibson/challenge2021.html
+      paper: https://arxiv.org/abs/2012.02924
+    leaderboard_status: archival
+    baseline_code_status: public-readonly
+    reproducibility_status: archival
+    foundation_model_relevance: low
+    sim_to_real_relevance: high
+    dataset_size: 8 fully interactive iGibson scenes; Interactive Nav + Social Nav (pedestrian-crowd) tracks.
+    license: MIT (iGibson); upstream scan datasets follow their own terms.
+    notes: CVPR 2021 Embodied AI Workshop challenge; historically important for interactive and social navigation.
 
   - id: smm-challenge-2025
     name: Social Mobile Manipulation Challenge
@@ -815,6 +1250,8 @@ benchmarks:
     reproducibility_status: needs-review
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: Challenge-specific multi-agent scenes with scene-graph prompts; full size not yet published.
+    license: see project (challenge registration required).
     notes: Navigation is part of a broader social mobile manipulation challenge.
 
   - id: ovmm
@@ -861,7 +1298,245 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: high
+    dataset_size: 200 simulated scenes with 7,892 object instances spanning 150 categories and 21 receptacle types.
+    license: MIT (HomeRobot code); HSSD and OVMM assets follow their own research terms.
     notes: OVMM requires navigating in unfamiliar homes, finding novel objects and receptacles, grasping, and placing; HomeRobot also maintained a CVPR 2024 challenge tag.
+
+  - id: alfred
+    name: ALFRED
+    year: 2020
+    task_family:
+      - instruction-following
+      - household-task-navigation
+      - mobile-manipulation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: AI2-THOR
+      url: https://askforalfred.com/
+    dataset:
+      name: ALFRED
+      url: https://askforalfred.com/
+      access: public
+    goal_type:
+      - natural-language-task-instruction
+      - step-by-step-subgoals
+    observation_modalities:
+      - rgb
+      - language
+    action_space:
+      - discrete-navigation
+      - interaction-with-objects
+    metrics:
+      - task-success
+      - goal-condition-success
+      - path-length-weighted-success
+    links:
+      project: https://askforalfred.com/
+      code: https://github.com/askforalfred/alfred
+      leaderboard: https://leaderboard.allenai.org/alfred/submissions/public
+      paper: https://arxiv.org/abs/1912.01734
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    dataset_size: 8,055 expert demonstrations, 25,743 language directives, 120 AI2-THOR scenes, ~428k image-action pairs.
+    license: MIT (code and data).
+    notes: Long-horizon language-conditioned household task benchmark with navigation and interaction subskills.
+
+  - id: teach
+    name: TEACh
+    year: 2022
+    task_family:
+      - vision-and-dialog-navigation
+      - instruction-following
+      - mobile-manipulation
+    environment_type:
+      - indoor
+      - simulation
+    simulator:
+      name: AI2-THOR
+      url: https://github.com/alexa/teach
+    dataset:
+      name: TEACh
+      url: https://github.com/alexa/teach
+      access: public
+    goal_type:
+      - dialog-history
+      - household-task
+    observation_modalities:
+      - rgb
+      - dialog
+      - action-history
+    action_space:
+      - discrete-navigation
+      - interaction-with-objects
+    metrics:
+      - task-success
+      - goal-condition-success
+      - mission-progress
+    links:
+      project: https://github.com/alexa/teach
+      code: https://github.com/alexa/teach
+      leaderboard: https://eval.ai/web/challenges/challenge-page/1652/overview
+      paper: https://arxiv.org/abs/2110.00534
+    leaderboard_status: active-historical
+    baseline_code_status: public
+    reproducibility_status: verified
+    foundation_model_relevance: high
+    sim_to_real_relevance: low
+    dataset_size: 3,215 human-human dialog sessions with ~39.5k utterances over AI2-THOR household tasks.
+    license: MIT (code and data, Amazon Alexa AI).
+    notes: Collaborative dialog-driven household tasks with EDH and TfD tracks; AAAI 2022.
+
+  - id: habitat-rearrange-2022
+    name: Habitat Rearrangement Challenge 2022
+    year: 2022
+    task_family:
+      - rearrangement
+      - object-navigation
+      - mobile-manipulation
+    environment_type:
+      - indoor
+      - simulation
+      - physics
+    simulator:
+      name: Habitat 2.0
+      url: https://aihabitat.org/challenge/2022_rearrange/
+    dataset:
+      name: ReplicaCAD rearrangement episodes
+      url: https://aihabitat.org/challenge/2022_rearrange/
+      access: public
+    goal_type:
+      - pick-and-place
+      - object-rearrangement
+    observation_modalities:
+      - rgb
+      - depth
+      - robot-state
+    action_space:
+      - continuous-base
+      - continuous-arm
+      - grip
+    metrics:
+      - success
+      - partial-success
+      - efficiency
+    links:
+      project: https://aihabitat.org/challenge/2022_rearrange/
+      code: https://github.com/facebookresearch/habitat-challenge
+      leaderboard: https://eval.ai/web/challenges/challenge-page/1820/overview
+      paper: https://arxiv.org/abs/2106.14405
+    leaderboard_status: archival
+    baseline_code_status: public-readonly
+    reproducibility_status: archival
+    foundation_model_relevance: medium
+    sim_to_real_relevance: high
+    dataset_size: 50k train episodes across 63 ReplicaCAD scenes; 1k val and 1k test episodes in 21 unseen scenes; Fetch robot.
+    license: MIT (challenge code); ReplicaCAD research terms.
+    notes: NeurIPS 2022 competition; navigation is required as part of pick-and-place rearrangement.
+
+  - id: behavior-1k
+    name: BEHAVIOR-1K
+    year: 2022
+    task_family:
+      - long-horizon-embodied
+      - rearrangement
+      - mobile-manipulation
+      - object-navigation
+    environment_type:
+      - indoor
+      - simulation
+      - interactive-physics
+    simulator:
+      name: OmniGibson
+      url: https://github.com/StanfordVL/BEHAVIOR-1K
+    dataset:
+      name: BEHAVIOR-1K
+      url: https://behavior.stanford.edu/
+      access: public
+    goal_type:
+      - household-activity
+      - logical-goal-condition
+    observation_modalities:
+      - rgb
+      - depth
+      - lidar
+      - robot-state
+      - segmentation
+    action_space:
+      - continuous-base
+      - continuous-arm
+      - articulated-interaction
+    metrics:
+      - task-success
+      - goal-condition-success
+      - efficiency
+    links:
+      project: https://behavior.stanford.edu/
+      code: https://github.com/StanfordVL/BEHAVIOR-1K
+      leaderboard: null
+      paper: https://arxiv.org/abs/2403.09227
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    dataset_size: 1,000 everyday activities over 50 fully interactive scenes; >9,000 annotated objects; runs on OmniGibson.
+    license: MIT (code and assets); upstream scan datasets follow their own terms.
+    notes: CoRL 2022 (extended 2024); long-horizon embodied activity benchmark where navigation is one of many required skills.
+
+  - id: grutopia
+    name: GRUtopia / GRScenes
+    year: 2024
+    task_family:
+      - long-horizon-embodied
+      - social-navigation
+      - mobile-manipulation
+      - object-navigation
+    environment_type:
+      - indoor
+      - outdoor
+      - simulation
+      - city-scale
+    simulator:
+      name: GRUtopia (Isaac Sim)
+      url: https://github.com/OpenRobotLab/GRUtopia
+    dataset:
+      name: GRScenes
+      url: https://github.com/OpenRobotLab/GRUtopia
+      access: public-with-non-commercial-terms
+    goal_type:
+      - household-and-city-tasks
+      - language-instruction
+    observation_modalities:
+      - rgb
+      - depth
+      - robot-state
+      - language
+    action_space:
+      - continuous-base
+      - continuous-arm
+      - high-level-skill
+    metrics:
+      - task-success
+      - sub-goal-success
+      - efficiency
+    links:
+      project: https://github.com/OpenRobotLab/GRUtopia
+      code: https://github.com/OpenRobotLab/GRUtopia
+      leaderboard: null
+      paper: https://arxiv.org/abs/2407.10943
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: high
+    dataset_size: 100k interactive annotated scenes across 89 categories; benchmarks include social navigation and mobile manipulation.
+    license: MIT (platform code); CC-BY-NC-SA 4.0 (GRScenes data).
+    notes: Shanghai AI Lab city-scale digital world for general robots; benchmarks cover navigation, social interaction, and long-horizon tasks.
 
   - id: aerialvln
     name: AerialVLN
@@ -902,6 +1577,8 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: 25 city-scale outdoor environments with ~8k natural-language navigation instructions for UAVs.
+    license: see project; upstream simulator assets follow their own terms.
     notes: UAV-based outdoor VLN benchmark with city-level scenarios.
 
   - id: avdn
@@ -943,7 +1620,57 @@ benchmarks:
     reproducibility_status: partial
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: ~3,000 dialog-driven navigation sessions over xView aerial imagery with human attention annotations.
+    license: see project; xView access terms required.
     notes: Dialog-based UAV navigation with human attention annotations.
+
+  - id: citynav
+    name: CityNav
+    year: 2024
+    task_family:
+      - aerial-navigation
+      - vision-language-navigation
+      - outdoor-navigation
+    environment_type:
+      - outdoor
+      - real-world-imagery
+      - uav
+      - city-scale
+    simulator:
+      name: CityNav (SensatUrban-based)
+      url: https://water-cookie.github.io/city-nav-proj/
+    dataset:
+      name: CityNav
+      url: https://github.com/water-cookie/citynav
+      access: public
+    goal_type:
+      - natural-language-geographic-goal
+      - landmark-description
+    observation_modalities:
+      - aerial-rgb
+      - 3d-point-cloud
+      - geographic-prior
+      - language
+    action_space:
+      - continuous-uav
+      - waypoint
+    metrics:
+      - success-rate
+      - trajectory-error
+      - landmark-grounding-accuracy
+    links:
+      project: https://water-cookie.github.io/city-nav-proj/
+      code: https://github.com/water-cookie/citynav
+      leaderboard: null
+      paper: https://arxiv.org/abs/2406.14240
+    leaderboard_status: benchmark-release
+    baseline_code_status: public
+    reproducibility_status: partial
+    foundation_model_relevance: high
+    sim_to_real_relevance: medium
+    dataset_size: 32,637 natural-language descriptions and human trajectories over ~5.8k objects in SensatUrban 3D city scenes.
+    license: see project; SensatUrban research terms.
+    notes: Outdoor language-goal aerial navigation benchmark grounded in real city 3D point clouds and geographic priors.
 
   - id: navbench
     name: NavBench
@@ -985,4 +1712,6 @@ benchmarks:
     reproducibility_status: needs-review
     foundation_model_relevance: high
     sim_to_real_relevance: medium
+    dataset_size: Complexity-stratified navigation comprehension and execution episodes; full size pending project release.
+    license: see project.
     notes: Probes MLLMs for embodied navigation comprehension and execution.

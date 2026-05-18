@@ -26,14 +26,25 @@ body:
       options:
         - point-navigation
         - image-navigation
+        - instance-image-navigation
         - object-navigation
+        - open-vocabulary-object-navigation
         - multi-object-navigation
         - vision-language-navigation
         - vision-and-dialog-navigation
+        - physical-embodiment-navigation
         - embodied-question-answering
+        - spatial-question-answering
+        - embodied-scene-understanding
         - social-navigation
+        - crowd-navigation
+        - interactive-navigation
+        - mobile-manipulation
+        - rearrangement
+        - long-horizon-embodied
         - audio-visual-navigation
         - aerial-navigation
+        - outdoor-navigation
         - foundation-model-navigation
         - other
     validations:

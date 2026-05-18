@@ -91,6 +91,17 @@ Key comparison axes:
 - environment: simulated home, physical robot setup, articulated or cluttered scene
 - metrics: overall success, partial success, steps, collisions, interaction success
 
+## Rearrangement and Long-Horizon Embodied Activity
+
+The benchmark evaluates the full chain of navigation, perception, and interaction needed to complete a household-style task. Navigation is one of several required skills rather than the whole task.
+
+Key comparison axes:
+
+- task specification: language instruction, dialog, logical goal condition, demonstration
+- horizon: single-room rearrangement, multi-room household activity, full-day activity
+- environment: ReplicaCAD, HSSD, AI2-THOR, OmniGibson, GRUtopia / GRScenes
+- metrics: task success, goal-condition success, sub-goal progress, efficiency, steps
+
 ## Audio-Visual Navigation
 
 The agent uses audio and visual observations to localize or navigate to a sounding object.
